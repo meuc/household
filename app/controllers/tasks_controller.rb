@@ -2,7 +2,8 @@ require "grouper"
 
 class TasksController < ApplicationController
   def index
-    @tasks = Grouper.new(Task.all).group_by(:interval_name, :size_name)
+    all_tasks = Task.all.order_by(:created_at)
+    @tasks = Grouper.new(all_tasks).group_by(:interval_name, :size_name)
   end
 
   def new
