@@ -1,0 +1,21 @@
+<% if @tasks.present? %>
+
+  <% @tasks.each do |interval, second_group| %>
+      <h1><%= interval %></h1>
+
+      <% second_group.each do |size, tasks| %>
+        <h2><%= size %></h2>
+
+        <ul>
+          <% tasks.each do |task| %>
+            <li>
+              <%= render task %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+  <% end %>
+
+<% else %>
+  <p>There are no tasks at the moment, please come again</p>
+<% end %>

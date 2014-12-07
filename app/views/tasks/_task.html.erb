@@ -1,0 +1,16 @@
+<label>
+  <input
+    type="checkbox"
+    class="toggle-task-done"
+    <% if task.done? %>
+      checked="done"
+    <% end %>
+    data-task-id="<%= task.id %>"
+  >
+
+  <%= task.text %>
+
+  (<%= task.user.username %>)
+</label>
+
+<%= link_to "Edit", edit_task_path(task) %>
