@@ -2,7 +2,12 @@ require "grouper"
 
 class TasksController < ApplicationController
   def index
-    all_tasks = Task.all.order(:created_at)
+    if params[:filter]
+      all_tasks = Task.where(user_id: params[:filter]).order(:created_at)
+    else
+      all_tasks = Task.all.order(:created_at)
+    end
+
     @tasks = Grouper.new(all_tasks).group_by(:interval_name, :size_name)
   end
 

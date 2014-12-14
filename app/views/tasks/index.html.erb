@@ -1,3 +1,14 @@
+Filter:
+<select id="filter-tasks" name="filter">
+  <option value="">All</option>
+
+  <% User.all.each do |user| %>
+    <option value="<%= user.id %>">
+      <%= user.username %>
+    </option>
+  <% end %>
+</select>
+
 <% if @tasks.present? %>
 
   <% @tasks.each do |interval, second_group| %>
